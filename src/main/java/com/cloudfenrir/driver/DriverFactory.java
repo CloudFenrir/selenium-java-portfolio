@@ -58,7 +58,7 @@ public final class DriverFactory {
 
     }
 
-    public WebDriver getDriver() {
+    public static WebDriver getDriver() {
         if (driver.get() != null) {
             return driver.get();
         } else {
@@ -66,7 +66,7 @@ public final class DriverFactory {
         }
     }
 
-    public void quitDriver() {
+    public static void quitDriver() {
         if (driver.get() != null) {
             driver.get().quit();
             driver.remove();
