@@ -41,6 +41,10 @@ public abstract class BasePage {
         return !elements.isEmpty() && elements.get(0).isDisplayed();
     }
 
+    protected static By byDataTest(String value) {
+        return By.cssSelector("[data-test='" + value + "']");
+    }
+
     protected abstract By pageIdentifier();
 
     public boolean isLoaded() {
