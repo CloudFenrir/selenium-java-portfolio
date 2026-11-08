@@ -10,7 +10,7 @@ public class ConfigReader {
     private static final Properties props = new Properties();
 
     static {
-        // TODO: open config.properties using try-with-resources
+        // open config.properties using try-with-resources
         try (InputStream input = ConfigReader.class.getClassLoader()
                 .getResourceAsStream("config.properties")) {
             if (input == null) {
@@ -25,16 +25,16 @@ public class ConfigReader {
     public static String get(String key) {
 
         if (props.getProperty(key) != null) {
-            // TODO: get the value
+            // get the value
             return props.getProperty(key);
         } else {
-            // TODO: if it's null → throw RuntimeException("Missing key: " + key)
+            // if it's null → throw RuntimeException("Missing key: " + key)
             throw new RuntimeException("Missing key: " + key);
         }
     }
 
     public static int getInt(String key) {
-        // TODO: reuse get() and convert to int
+        // reuse get() and convert to int
         return Integer.parseInt(get(key));
     }
 
