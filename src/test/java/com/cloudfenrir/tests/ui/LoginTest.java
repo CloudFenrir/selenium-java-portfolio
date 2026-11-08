@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
-    @DataProvider(name = "invalidLogins")
+    @DataProvider(name = "invalidLogins", parallel = true)
     public Object[][] invalidLogins() {
         return new Object[][] {
                 {"locked_out_user", "secret_sauce", "Epic sadface: Sorry, this user has been locked out."},
