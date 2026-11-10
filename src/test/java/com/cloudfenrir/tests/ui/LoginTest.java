@@ -23,7 +23,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void validLoginShouldOpenInventory() {
         LoginPage loginPage = new LoginPage();
-        InventoryPage inventoryPage = loginPage.login(ConfigReader.get("username"), ConfigReader.get("password"));
+        InventoryPage inventoryPage = loginPage.login(ConfigReader.get("appUsername"), ConfigReader.get("appPassword"));
         Assert.assertTrue(inventoryPage.isLoaded(), "Inventory page did not load after login");
         Assert.assertEquals(inventoryPage.getPageTitle(), "Products");
     }
