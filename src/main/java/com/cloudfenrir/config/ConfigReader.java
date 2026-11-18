@@ -1,6 +1,5 @@
 package com.cloudfenrir.config;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -23,14 +22,17 @@ public class ConfigReader {
     }
 
     public static String get(String key) {
-
-        if (props.getProperty(key) != null) {
-            // get the value
-            return props.getProperty(key);
-        } else {
-            // if it's null → throw RuntimeException("Missing key: " + key)
+        String value = System.getProperty(key);
+        if (value == null) {
+            value = System.getenv(key.toUpperCase());
+        }
+        if (value == null) {
+            value = props.getProperty(key);
+        }
+        if (value == null) {
             throw new RuntimeException("Missing key: " + key);
         }
+        return value;
     }
 
     public static int getInt(String key) {
@@ -38,9 +40,4 @@ public class ConfigReader {
         return Integer.parseInt(get(key));
     }
 
-    // Temporary, just to test it
-    public static void main(String[] args) {
-        System.out.println(ConfigReader.get("baseUrl"));
-        System.out.println(ConfigReader.getInt("timeout"));
-    }
 }
