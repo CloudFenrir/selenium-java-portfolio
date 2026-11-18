@@ -1,5 +1,7 @@
 package com.cloudfenrir.config;
 
+import com.cloudfenrir.utils.FrameworkException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -13,11 +15,11 @@ public class ConfigReader {
         try (InputStream input = ConfigReader.class.getClassLoader()
                 .getResourceAsStream("config.properties")) {
             if (input == null) {
-                throw new RuntimeException("config.properties not found in classpath");
+                throw new FrameworkException("config.properties not found in classpath");
             }
             props.load(input);
         } catch (IOException e) {
-            throw new RuntimeException("Could not load config", e);
+            throw new FrameworkException("Could not load config", e);
         }
     }
 
@@ -30,7 +32,7 @@ public class ConfigReader {
             value = props.getProperty(key);
         }
         if (value == null) {
-            throw new RuntimeException("Missing key: " + key);
+            throw new FrameworkException("Missing key: " + key);
         }
         return value;
     }
