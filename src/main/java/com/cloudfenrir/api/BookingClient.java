@@ -19,15 +19,15 @@ public class BookingClient {
     public BookingClient() {
         this.spec = new RequestSpecBuilder()
                 .setBaseUri(ConfigReader.get("apiBaseUrl"))
-                .setContentType(ContentType.JSON)     // what we send
-                .setAccept(ContentType.JSON)          // what we want back (restful-booker needs it)
+                .setContentType(ContentType.JSON)
+                .setAccept("application/json")
                 .build();
     }
 
     public Response createBooking(Booking booking) {
         return given()
                 .spec(spec)
-                .body(booking)                        // serialization: Booking → JSON, automatic
+                .body(booking)
                 .when()
                 .post("/booking");
     }
