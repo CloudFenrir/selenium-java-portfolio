@@ -8,4 +8,10 @@
         </classes>
     </test>
 
+    <test name="API Tests">
+        <classes>
+            <class name="com.cloudfenrir.tests.api.BookingApiTest"/>
+        </classes>
+    </test>
+
 </suite>
